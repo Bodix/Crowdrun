@@ -1,0 +1,13 @@
+/*
+.DS_Store
+
+!.gitignore
+!.gitattributes
+!.gitmodules
+!*.DotSettings
+!README.md
+
+!.idea/
+!Assets/
+!Packages/
+!ProjectSettings/
