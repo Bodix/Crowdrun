@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 106176689}
   - component: {fileID: 106176691}
   - component: {fileID: 106176690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &106176689
 RectTransform:
@@ -183,12 +183,12 @@ GameObject:
   - component: {fileID: 1842886148}
   - component: {fileID: 1842886150}
   - component: {fileID: 1842886149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1842886148
 RectTransform:
@@ -356,12 +356,12 @@ GameObject:
   - component: {fileID: 2891527271426007390}
   - component: {fileID: 8566433066400185252}
   - component: {fileID: 313694366021558233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8324697131259721643
 Transform:
@@ -437,10 +437,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346052874700086293}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3738381445140203896
@@ -454,13 +454,12 @@ GameObject:
   - component: {fileID: 3738381445140203899}
   - component: {fileID: 3738381445140203900}
   - component: {fileID: 3738381445140203901}
-  - component: {fileID: 3738381445140203898}
   m_Layer: 0
   m_Name: Middle Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3738381445140203899
 Transform:
@@ -527,19 +526,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3738381445140203898
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3738381445140203896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3738381445224646201
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,13 +537,12 @@ GameObject:
   - component: {fileID: 3738381445224646200}
   - component: {fileID: 3738381445224646205}
   - component: {fileID: 3738381445224646202}
-  - component: {fileID: 3738381445224646203}
   m_Layer: 0
   m_Name: Left Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3738381445224646200
 Transform:
@@ -624,19 +609,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3738381445224646203
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3738381445224646201}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3738381445484733981
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,13 +620,12 @@ GameObject:
   - component: {fileID: 3738381445484733980}
   - component: {fileID: 3738381445484733921}
   - component: {fileID: 3738381445484733982}
-  - component: {fileID: 3738381445484733983}
   m_Layer: 0
   m_Name: Right Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3738381445484733980
 Transform:
@@ -721,19 +692,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3738381445484733983
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3738381445484733981}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3738381445689697411
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +707,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3738381445689697410
 Transform:
@@ -780,17 +738,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3738381445689697411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61184dd867f79b249ab4f640dc8030eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 43e2b206396208d4db8abbaa6773330a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LeftGatePowerUp:
     Type: 1
-    AdditionalAmount: 0
+    AdditionalAmount: 10
     Multiplier: 2
   RightGatePowerUp:
     Type: 0
     AdditionalAmount: 10
-    Multiplier: 5
+    Multiplier: 2
   LeftGateText: {fileID: 1842886149}
   RightGateText: {fileID: 106176690}
 --- !u!1 &4678720529595848810
@@ -805,12 +763,12 @@ GameObject:
   - component: {fileID: 3252429851817791089}
   - component: {fileID: 4748719945060185352}
   - component: {fileID: 7861608297051740803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3950830690395837888
 Transform:
@@ -886,9 +844,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4678720529595848810}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}

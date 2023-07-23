@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts;
@@ -31,10 +30,11 @@ public class Crowd : MonoBehaviour, IRootMotionReceiver
 
     public void OnTriggerEnter(Collider other)
     {
-        DoubleGate gate = other.GetComponent<DoubleGate>();
+        Debug.Log("VAR");
+        DoubleGate gate = other.GetComponentInParent<DoubleGate>();
         if (gate)
         {
-            throw new NotImplementedException();
+            Debug.Log("log");
         }
     }
 
