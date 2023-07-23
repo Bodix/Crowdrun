@@ -10,6 +10,7 @@ namespace Bodix.Crowdrun
         [SerializeField]
         private Crowd _crowd;
 
+        private int _coins;
         private bool _isStarted;
 
         private void Awake()
