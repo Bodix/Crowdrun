@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts
+namespace Bodix.Crowdrun
 {
     public class Character : MonoBehaviour
     {
@@ -8,18 +8,21 @@ namespace _Game.Scripts
         private Animator _animator;
 
         private static readonly int SpeedParam = Animator.StringToHash("Speed");
-        private static readonly int IsMovingParam = Animator.StringToHash("IsMoving");
+        private static readonly int RunState = Animator.StringToHash("Run");
 
-        public Character Initialize(float forwardSpeed)
+        public Character Initialize(float forwardSpeed, bool isMoving)
         {
+            // TODO: Add noise to run animation.
             _animator.SetFloat(SpeedParam, forwardSpeed);
+            if (isMoving)
+                StartMoving();
 
             return this;
         }
 
         public void StartMoving()
         {
-            _animator.SetTrigger(IsMovingParam);
+            _animator.Play(RunState);
         }
     }
 }

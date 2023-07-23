@@ -1,22 +1,26 @@
 using TMPro;
 using UnityEngine;
 
-public class CrowdCounterUi : MonoBehaviour
+namespace Bodix.Crowdrun
 {
-    [SerializeField]
-    private Crowd _crowd;
-    [SerializeField]
-    private TextMeshProUGUI _text;
-
-    private int _prevCount;
-
-    private void Update()
+    public class CrowdCounterUi : MonoBehaviour
     {
-        if (_crowd.Count != _prevCount)
-        {
-            _text.text = _crowd.Count.ToString();
+        [SerializeField]
+        private Crowd _crowd;
+        [SerializeField]
+        private TextMeshProUGUI _text;
 
-            _prevCount = _crowd.Count;
+        private int _prevCount;
+
+        private void Update()
+        {
+            // This check to prevent redundant redrawing canvas.
+            if (_crowd.Count != _prevCount)
+            {
+                _text.text = _crowd.Count.ToString();
+
+                _prevCount = _crowd.Count;
+            }
         }
     }
 }

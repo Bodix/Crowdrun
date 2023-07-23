@@ -1,7 +1,7 @@
 ﻿using Evolutex.Evolunity.Components;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace Bodix.Crowdrun
 {
     public class Game : MonoBehaviour
     {

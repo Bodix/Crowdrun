@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.RootMotion
+namespace Bodix.Crowdrun.RootMotion
 {
     public interface IRootMotionReceiver
     {

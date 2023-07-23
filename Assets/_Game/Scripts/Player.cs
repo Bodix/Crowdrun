@@ -1,24 +1,27 @@
 using Evolutex.Evolunity.Components;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Bodix.Crowdrun
 {
-    [SerializeField]
-    private InputReader _inputReader;
-    [SerializeField]
-    private Crowd _crowd;
-
-    private bool _isStarted;
-
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        _inputReader.Drag += input => _crowd.Move(input.x);
+        [SerializeField]
+        private InputReader _inputReader;
+        [SerializeField]
+        private Crowd _crowd;
 
-        _crowd.Refill(1);
-    }
+        private bool _isStarted;
 
-    public void StartGame()
-    {
-        _crowd.StartMoving();
+        private void Awake()
+        {
+            _inputReader.Drag += input => _crowd.Move(input.x);
+
+            _crowd.Refill(1);
+        }
+
+        public void StartGame()
+        {
+            _crowd.StartMoving();
+        }
     }
 }

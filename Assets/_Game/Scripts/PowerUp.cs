@@ -1,7 +1,7 @@
 ﻿using System;
 using NaughtyAttributes;
 
-namespace _Game.Scripts
+namespace Bodix.Crowdrun
 {
     [Serializable]
     public class PowerUp
