@@ -1,4 +1,6 @@
-﻿using Evolutex.Evolunity.Components;
+﻿using System;
+using Evolutex.Evolunity.Components;
+using Evolutex.Evolunity.Utilities;
 using UnityEngine;
 
 namespace Bodix.Crowdrun
@@ -11,16 +13,43 @@ namespace Bodix.Crowdrun
         private Crowd _crowd;
         [SerializeField]
         private GameObject _tutorialUi;
-        
-        public bool IsStarted { get; private set; } 
-        public int Coins { get; private set; }
-        
+
+        public event Action<int> CoinsUpdated;
+
+        public bool IsStarted { get; private set; }
+
+        private int _coins;
+        public int Coins
+        {
+            get => _coins;
+            private set
+            {
+                _coins = value;
+                CoinsUpdated?.Invoke(_coins);
+            }
+        }
+
         private void Awake()
         {
             _crowd.Refill(1);
-            
-            _inputReader.Drag += input => _crowd.Move(input.x);
+
+            _inputReader.Drag += ProcessInput;
             _inputReader.Drag += StartGameUnsubscribable;
+
+            Repeat.EverySeconds(1, () => Coins += 1);
+        }
+
+        public void FinishGame()
+        {
+            IsStarted = false;
+
+            Delay.ForSeconds(1f, () => _crowd.StopMovingAndDance());
+        }
+
+        private void ProcessInput(Vector2 input)
+        {
+            if (IsStarted)
+                _crowd.Move(input.x);
         }
 
         private void StartGameUnsubscribable(Vector2 input)
@@ -31,12 +60,6 @@ namespace Bodix.Crowdrun
             IsStarted = true;
 
             _inputReader.Drag -= StartGameUnsubscribable;
-        }
-
-        private void FinishGame()
-        {
-            IsStarted = false;
-            
         }
     }
 }

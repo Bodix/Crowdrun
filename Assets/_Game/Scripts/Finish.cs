@@ -9,7 +9,7 @@ namespace Bodix.Crowdrun
 
         public void Enter(Crowd crowd)
         {
-            throw new System.NotImplementedException();
+            _game.FinishGame();
         }
     }
 }

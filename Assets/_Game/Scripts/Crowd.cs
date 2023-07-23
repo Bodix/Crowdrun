@@ -87,6 +87,14 @@ namespace Bodix.Crowdrun
                 -_maxMoveDistance + _width,
                 _maxMoveDistance - _width));
         }
+        
+        public void StopMovingAndDance()
+        {
+            _isMoving = false;
+            
+            foreach (Character character in _characters)
+                character.StopMovingAndDance();
+        }
 
         private void UpdateRootMotionSource()
         {

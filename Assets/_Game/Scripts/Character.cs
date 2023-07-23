@@ -8,6 +8,8 @@ namespace Bodix.Crowdrun
         private Animator _animator;
 
         private static readonly int SpeedParam = Animator.StringToHash("Speed");
+        private static readonly int StopMovingParam = Animator.StringToHash("Stop Moving");
+        private static readonly int DanceParam = Animator.StringToHash("Dance");
         private static readonly int RunState = Animator.StringToHash("Run");
 
         public Character Initialize(float forwardSpeed, bool isMoving)
@@ -23,6 +25,12 @@ namespace Bodix.Crowdrun
         public void StartMoving()
         {
             _animator.Play(RunState);
+        }
+
+        public void StopMovingAndDance()
+        {
+            _animator.SetTrigger(StopMovingParam);
+            _animator.SetTrigger(DanceParam);
         }
     }
 }
