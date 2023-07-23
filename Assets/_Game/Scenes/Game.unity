@@ -1324,18 +1324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1835888384}
     m_Modifications:
-    - target: {fileID: 320848740, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
-      propertyPath: RightGatePowerUp.AdditionalAmount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 313694366021558233, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 313694366021558233, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3738381445689697410, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1383,14 +1371,6 @@ PrefabInstance:
     - target: {fileID: 3738381445689697411, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
       propertyPath: m_Name
       value: Double Gate
-      objectReference: {fileID: 0}
-    - target: {fileID: 7861608297051740803, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7861608297051740803, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
