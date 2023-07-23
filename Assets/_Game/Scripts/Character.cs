@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using BattleJourney.Gameplay;
+using UnityEngine;
 
 namespace Bodix.Crowdrun
 {
@@ -6,6 +7,8 @@ namespace Bodix.Crowdrun
     {
         [SerializeField]
         private Animator _animator;
+        [SerializeField]
+        private SpecialFx _destroyFx;
 
         private static readonly int SpeedParam = Animator.StringToHash("Speed");
         private static readonly int StopMovingParam = Animator.StringToHash("Stop Moving");
@@ -31,6 +34,12 @@ namespace Bodix.Crowdrun
         {
             _animator.SetTrigger(StopMovingParam);
             _animator.SetTrigger(DanceParam);
+        }
+
+        public void DestroyAnimated()
+        {
+            _destroyFx.Play();
+            Destroy(gameObject);
         }
     }
 }

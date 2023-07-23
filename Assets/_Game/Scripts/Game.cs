@@ -35,14 +35,12 @@ namespace Bodix.Crowdrun
 
             _inputReader.Drag += ProcessInput;
             _inputReader.Drag += StartGameUnsubscribable;
-
-            Repeat.EverySeconds(1, () => Coins += 1);
         }
 
         public void FinishGame()
         {
             IsStarted = false;
-
+            
             Delay.ForSeconds(1f, () => _crowd.StopMovingAndDance());
         }
 
