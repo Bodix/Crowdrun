@@ -28,6 +28,7 @@ namespace Bodix.Crowdrun
         private bool _isMoving;
 
         public int Count => _characters.Count;
+        public IReadOnlyList<Character> Characters => _characters;
 
         public void OnTriggerEnter(Collider other)
         {

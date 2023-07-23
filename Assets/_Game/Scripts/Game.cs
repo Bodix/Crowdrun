@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using Evolutex.Evolunity.Components;
-using Evolutex.Evolunity.Utilities;
 using UnityEngine;
 
 namespace Bodix.Crowdrun
@@ -40,8 +40,27 @@ namespace Bodix.Crowdrun
         public void FinishGame()
         {
             IsStarted = false;
-            
-            Delay.ForSeconds(1f, () => _crowd.StopMovingAndDance());
+
+            StartCoroutine(FinishGameCoroutine());
+        }
+
+        private IEnumerator FinishGameCoroutine()
+        {
+            // Waiting for crowd running a little bit forward.
+            yield return new WaitForSeconds(1f);
+
+            _crowd.StopMovingAndDance();
+
+            // Playing dance animation a little bit.
+            yield return new WaitForSeconds(2f);
+
+            foreach (Character character in _crowd.Characters)
+            {
+                character.DestroyWithFx();
+                Coins += 1;
+
+                yield return new WaitForSeconds(0.1f);
+            }
         }
 
         private void ProcessInput(Vector2 input)

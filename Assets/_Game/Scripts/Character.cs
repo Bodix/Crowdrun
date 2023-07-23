@@ -1,4 +1,5 @@
 ﻿using BattleJourney.Gameplay;
+using Evolutex.Evolunity.Utilities;
 using UnityEngine;
 
 namespace Bodix.Crowdrun
@@ -36,9 +37,13 @@ namespace Bodix.Crowdrun
             _animator.SetTrigger(DanceParam);
         }
 
-        public void DestroyAnimated()
+        public void DestroyWithFx()
         {
+            // TODO: Refactoring. Combine changing parent, playing and destroying of effect.
+            _destroyFx.transform.SetParent(null);
             _destroyFx.Play();
+
+            Delay.ForSeconds(3f, () => Destroy(_destroyFx.gameObject));
             Destroy(gameObject);
         }
     }
