@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Bodix.Crowdrun
+namespace Bodix.Crowdrun.UI
 {
     public class CrowdCounterUi : MonoBehaviour
     {

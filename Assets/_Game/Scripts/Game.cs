@@ -19,7 +19,7 @@ namespace Bodix.Crowdrun
             _inputReader.Drag += StartGame;
         }
 
-        private void StartGame(Vector2 obj)
+        private void StartGame(Vector2 input)
         {
             _player.StartGame();
             _tutorialUi.SetActive(false);
@@ -27,6 +27,12 @@ namespace Bodix.Crowdrun
             IsStarted = true;
 
             _inputReader.Drag -= StartGame;
+        }
+
+        private void FinishGame()
+        {
+            IsStarted = false;
+            
         }
     }
 }

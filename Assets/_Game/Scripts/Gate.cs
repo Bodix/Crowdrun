@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Bodix.Crowdrun
 {
     [RequireComponent(typeof(MeshCollider))]
-    public class Gate : MonoBehaviour
+    public class Gate : MonoBehaviour, ICrowdTrigger
     {
         public PowerUp PowerUp;
 

@@ -31,9 +31,11 @@ namespace Bodix.Crowdrun
 
         public void OnTriggerEnter(Collider other)
         {
-            Gate gate = other.GetComponent<Gate>();
-            if (gate)
-                gate.Enter(this);
+            ICrowdTrigger trigger = other.GetComponent<ICrowdTrigger>();
+            if (trigger != null)
+                trigger.Enter(this);
+            else
+                Debug.LogError("Crowd trigger without handler (without interface). Redundant collision");
         }
 
         public void MoveByRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
