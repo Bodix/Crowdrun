@@ -1,6 +1,4 @@
 ﻿using System;
-using BattleJourney.Gameplay;
-using Evolutex.Evolunity.Utilities;
 using UnityEngine;
 
 namespace Bodix.Crowdrun
@@ -42,11 +40,8 @@ namespace Bodix.Crowdrun
 
         public void DestroyWithFx()
         {
-            // TODO: Refactoring. Combine changing parent, playing and destroying of effect.
-            _destroyFx.transform.SetParent(null);
-            _destroyFx.Play();
-
-            Delay.ForSeconds(3f, () => Destroy(_destroyFx.gameObject));
+            _destroyFx.RemoveParentAndPlay().DestroyAfter(3f);
+            
             Destroy(gameObject);
             Destroyed?.Invoke();
         }

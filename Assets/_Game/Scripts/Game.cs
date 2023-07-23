@@ -55,7 +55,7 @@ namespace Bodix.Crowdrun
             _crowd.StopMovingAndDance();
 
             // Playing dance animation a little bit.
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
 
             foreach (Character character in _crowd.Characters.ToArray())
             {

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e5cf5c64e434841b286b60e5459b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 826862899496101854}
+  _particleSystems:
+  - {fileID: 826862899496101854}
   _audioSource: {fileID: 826862899509689710}
 --- !u!1001 &826862899510431054
 PrefabInstance:
