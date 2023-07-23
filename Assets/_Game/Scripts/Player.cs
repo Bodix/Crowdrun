@@ -12,23 +12,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _inputReader.Drag += input =>
-        {
-            TryStartGame();
-
-            _crowd.Move(input.x);
-        };
+        _inputReader.Drag += input => _crowd.Move(input.x);
 
         _crowd.Refill(1);
     }
 
-    private void TryStartGame()
+    public void StartGame()
     {
-        if (!_isStarted)
-        {
-            _crowd.StartMoving();
-
-            _isStarted = true;
-        }
+        _crowd.StartMoving();
     }
 }
