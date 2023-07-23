@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DoubleGate : MonoBehaviour
 {
-    public GatePowerUp LeftGatePowerUp;
-    public GatePowerUp RightGatePowerUp;
+    public PowerUp LeftGatePowerUp;
+    public PowerUp RightGatePowerUp;
     public TextMeshPro LeftGateText;
     public TextMeshPro RightGateText;
 
@@ -16,12 +16,12 @@ public class DoubleGate : MonoBehaviour
         SetText(RightGateText, RightGatePowerUp);
     }
 
-    private void SetText(TextMeshPro text, GatePowerUp powerUp)
+    private void SetText(TextMeshPro text, PowerUp powerUp)
     {
         text.text = powerUp.Type switch
         {
-            GatePowerUpType.AddCharacters => "+" + powerUp.AdditionalAmount,
-            GatePowerUpType.MultiplyCharacters => "x" + powerUp.Multiplier,
+            PowerUpType.AddCharacters => "+" + powerUp.AdditionalAmount,
+            PowerUpType.MultiplyCharacters => "x" + powerUp.Multiplier,
             _ => throw new ArgumentOutOfRangeException()
         };
     }

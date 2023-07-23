@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts;
+using _Game.Scripts.RootMotion;
 using Evolutex.Evolunity.Extensions;
 using Evolutex.Evolunity.Utilities;
 using Evolutex.Evolunity.Utilities.Gizmos;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Crowd : MonoBehaviour
+public class Crowd : MonoBehaviour, IRootMotionReceiver
 {
     [SerializeField]
     private float _distanceBetweenCharacters = 0.4f;
@@ -27,12 +28,17 @@ public class Crowd : MonoBehaviour
 
     public int Count => _characters.Count;
 
+    public void MoveByRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
+    {
+        transform.Translate(new Vector3(0, 0, deltaPosition.z));
+    }
+
     public void Refill(int characterCount)
     {
         // TODO: Implement pooling.
         _characters.ForEach(x => Destroy(x.gameObject));
         _characters.Clear();
-        
+
         for (int i = 0; i < characterCount; i++)
         {
             // TODO: Improve spawn position logic.
@@ -56,6 +62,12 @@ public class Crowd : MonoBehaviour
         UpdateWidth();
     }
 
+    public void StartMoving()
+    {
+        foreach (Character character in _characters)
+            character.StartMoving();
+    }
+
     public void Move(float input)
     {
         transform.Translate(new Vector3(input * _directionalSpeed * 0.005f, 0));
@@ -67,10 +79,10 @@ public class Crowd : MonoBehaviour
     private void UpdateMainCharacter()
     {
         if (_mainCharacter)
-            Destroy(_mainCharacter.GetComponent<RedirectRootMotionToCrowd>());
+            Destroy(_mainCharacter.GetComponent<RootMotionRedirector>());
 
         _mainCharacter = _characters[0];
-        _mainCharacter.AddComponent<RedirectRootMotionToCrowd>().Initialize(this);
+        _mainCharacter.AddComponent<RootMotionRedirector>().Initialize(this);
     }
 
     private void UpdateWidth()
