@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Game.Scripts;
@@ -27,6 +28,15 @@ public class Crowd : MonoBehaviour, IRootMotionReceiver
     private float _width;
 
     public int Count => _characters.Count;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        DoubleGate gate = other.GetComponent<DoubleGate>();
+        if (gate)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     public void MoveByRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
@@ -87,7 +97,7 @@ public class Crowd : MonoBehaviour, IRootMotionReceiver
 
     private void UpdateWidth()
     {
-        _width = Mathf.Abs(_characters.Max(x => x.transform.position.x));
+        _width = _characters.Max(x => x.transform.position.x);
     }
 
     private Vector2 GetCirclePosition(int count, int index, float radius)
