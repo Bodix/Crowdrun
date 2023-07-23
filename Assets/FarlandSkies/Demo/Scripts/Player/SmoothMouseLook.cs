@@ -33,15 +33,15 @@ public class SmoothMouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetButton("Look")) return;
+        if (!UnityEngine.Input.GetButton("Look")) return;
 
         if (axes == RotationAxes.MouseXAndY)
         {
             rotAverageY = 0f;
             rotAverageX = 0f;
 
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+            rotationY += UnityEngine.Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationX += UnityEngine.Input.GetAxis("Mouse X") * sensitivityX;
 
             rotArrayY.Add(rotationY);
             rotArrayX.Add(rotationX);
@@ -83,7 +83,7 @@ public class SmoothMouseLook : MonoBehaviour
         {
             rotAverageX = 0f;
 
-            rotationX += Input.GetAxis("Mouse X") * sensitivityX;
+            rotationX += UnityEngine.Input.GetAxis("Mouse X") * sensitivityX;
 
             rotArrayX.Add(rotationX);
 
@@ -107,7 +107,7 @@ public class SmoothMouseLook : MonoBehaviour
         {
             rotAverageY = 0f;
 
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY += UnityEngine.Input.GetAxis("Mouse Y") * sensitivityY;
 
             rotArrayY.Add(rotationY);
 

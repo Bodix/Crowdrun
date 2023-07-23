@@ -65,8 +65,8 @@ public class FPSWalkerEnhanced : MonoBehaviour
 
     void FixedUpdate()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        float inputX = UnityEngine.Input.GetAxis("Horizontal");
+        float inputY = UnityEngine.Input.GetAxis("Vertical");
         // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
         float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed) ? .7071f : 1.0f;
 
@@ -98,7 +98,7 @@ public class FPSWalkerEnhanced : MonoBehaviour
 
             // If running isn't on a toggle, then use the appropriate speed depending on whether the run button is down
             if (!toggleRun)
-                speed = Input.GetButton("Run") ? runSpeed : walkSpeed;
+                speed = UnityEngine.Input.GetButton("Run") ? runSpeed : walkSpeed;
 
             // If sliding (and it's allowed), or if we're on an object tagged "Slide", get a vector pointing down the slope we're on
             if ((sliding && slideWhenOverSlopeLimit) || (slideOnTaggedObjects && hit.collider.tag == "Slide"))
@@ -117,7 +117,7 @@ public class FPSWalkerEnhanced : MonoBehaviour
             }
 
             // Jump! But only if the jump button has been released and player has been grounded for a given number of frames
-            if (!Input.GetButton("Jump"))
+            if (!UnityEngine.Input.GetButton("Jump"))
                 jumpTimer++;
             else if (jumpTimer >= antiBunnyHopFactor)
             {
@@ -153,7 +153,7 @@ public class FPSWalkerEnhanced : MonoBehaviour
     {
         // If the run button is set to toggle, then switch between walk/run speed. (We use Update for this...
         // FixedUpdate is a poor place to use GetButtonDown, since it doesn't necessarily run every frame and can miss the event)
-        if (toggleRun && grounded && Input.GetButtonDown("Run"))
+        if (toggleRun && grounded && UnityEngine.Input.GetButtonDown("Run"))
             speed = (speed == walkSpeed ? runSpeed : walkSpeed);
     }
 

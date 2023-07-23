@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.evolutex.evolunity": {
+      "version": "https://github.com/Bodix/Evolunity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c1569c69e4de8642ee7bbdb38a0dc4fc078b9b15"
+    },
     "com.unity.cinemachine": {
       "version": "2.8.9",
       "depth": 0,
