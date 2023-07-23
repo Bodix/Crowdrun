@@ -12,6 +12,6 @@ public class Player : MonoBehaviour
     {
         _inputReader.Drag += input => _crowd.Move(input.x);
 
-        _crowd.Fill();
+        _crowd.Refill(1);
     }
 }
