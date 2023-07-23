@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Evolutex.Evolunity.Components;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Bodix.Crowdrun
         private Crowd _crowd;
         [SerializeField]
         private GameObject _tutorialUi;
+        [SerializeField]
+        private GameObject _crowdCounterUi;
 
         public event Action<int> CoinsUpdated;
 
@@ -54,13 +57,15 @@ namespace Bodix.Crowdrun
             // Playing dance animation a little bit.
             yield return new WaitForSeconds(2f);
 
-            foreach (Character character in _crowd.Characters)
+            foreach (Character character in _crowd.Characters.ToArray())
             {
                 character.DestroyWithFx();
                 Coins += 1;
 
                 yield return new WaitForSeconds(0.1f);
             }
+            
+            _crowdCounterUi.gameObject.SetActive(false);
         }
 
         private void ProcessInput(Vector2 input)

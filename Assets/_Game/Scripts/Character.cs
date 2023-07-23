@@ -1,4 +1,5 @@
-﻿using BattleJourney.Gameplay;
+﻿using System;
+using BattleJourney.Gameplay;
 using Evolutex.Evolunity.Utilities;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace Bodix.Crowdrun
         private Animator _animator;
         [SerializeField]
         private SpecialFx _destroyFx;
+
+        public event Action Destroyed;
 
         private static readonly int SpeedParam = Animator.StringToHash("Speed");
         private static readonly int StopMovingParam = Animator.StringToHash("Stop Moving");
@@ -45,6 +48,7 @@ namespace Bodix.Crowdrun
 
             Delay.ForSeconds(3f, () => Destroy(_destroyFx.gameObject));
             Destroy(gameObject);
+            Destroyed?.Invoke();
         }
     }
 }

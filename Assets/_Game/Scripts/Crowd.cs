@@ -61,12 +61,14 @@ namespace Bodix.Crowdrun
                     _ => MathUtilities.GetPhyllotaxisPosition(i, _distanceBetweenCharacters)
                 };
 
-                _characters.Add(Instantiate(
-                        _characterPrefab,
-                        new Vector3(position.x, transform.position.y, position.y),
-                        Quaternion.identity,
-                        transform)
-                    .Initialize(_forwardSpeed, _isMoving));
+                Character character = Instantiate(
+                    _characterPrefab,
+                    new Vector3(position.x, transform.position.y, position.y),
+                    Quaternion.identity,
+                    transform);
+                character.Initialize(_forwardSpeed, _isMoving);
+                character.Destroyed += () => _characters.Remove(character);
+                _characters.Add(character);
             }
 
             UpdateRootMotionSource();
@@ -76,7 +78,7 @@ namespace Bodix.Crowdrun
         public void StartMoving()
         {
             _isMoving = true;
-        
+
             foreach (Character character in _characters)
                 character.StartMoving();
         }
@@ -88,11 +90,11 @@ namespace Bodix.Crowdrun
                 -_maxMoveDistance + _width,
                 _maxMoveDistance - _width));
         }
-        
+
         public void StopMovingAndDance()
         {
             _isMoving = false;
-            
+
             foreach (Character character in _characters)
                 character.StopMovingAndDance();
         }

@@ -551,6 +551,7 @@ MonoBehaviour:
   _inputReader: {fileID: 1762428845}
   _crowd: {fileID: 1052981285}
   _tutorialUi: {fileID: 1870886922}
+  _crowdCounterUi: {fileID: 1699776536}
 --- !u!1 &691832635
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +605,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
