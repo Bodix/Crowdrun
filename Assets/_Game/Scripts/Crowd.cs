@@ -23,7 +23,7 @@ namespace Bodix.Crowdrun
         private Character _characterPrefab;
 
         private readonly List<Character> _characters = new();
-        private Character _mainCharacter;
+        private Character _rootMotionSourceCharacter;
         private float _width;
         private bool _isMoving;
 
@@ -66,7 +66,7 @@ namespace Bodix.Crowdrun
                     .Initialize(_forwardSpeed, _isMoving));
             }
 
-            UpdateMainCharacter();
+            UpdateRootMotionSource();
             UpdateWidth();
         }
 
@@ -86,13 +86,13 @@ namespace Bodix.Crowdrun
                 _maxMoveDistance - _width));
         }
 
-        private void UpdateMainCharacter()
+        private void UpdateRootMotionSource()
         {
-            if (_mainCharacter)
-                Destroy(_mainCharacter.GetComponent<RootMotionRedirector>());
+            if (_rootMotionSourceCharacter)
+                Destroy(_rootMotionSourceCharacter.GetComponent<RootMotionRedirector>());
 
-            _mainCharacter = _characters[0];
-            _mainCharacter.gameObject.AddComponent<RootMotionRedirector>().Initialize(this);
+            _rootMotionSourceCharacter = _characters[0];
+            _rootMotionSourceCharacter.gameObject.AddComponent<RootMotionRedirector>().Initialize(this);
         }
 
         private void UpdateWidth()
