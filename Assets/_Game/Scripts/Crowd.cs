@@ -58,7 +58,7 @@ namespace Bodix.Crowdrun
 
             int totalCharacterCount = _characters.Count + characterCount;
             bool regenerateCrowd = totalCharacterCount < 9;
-            if (regenerateCrowd)
+            if (regenerateCrowd) // Not critical for optimization.
             {
                 _characters.ForEach(x => Destroy(x.gameObject));
                 _characters.Clear();
