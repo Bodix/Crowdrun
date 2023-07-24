@@ -11,11 +11,9 @@ namespace Bodix.Crowdrun
         public int AdditionalAmount = 10;
         [AllowNesting, ShowIf(nameof(IsMultiply))]
         public int Multiplier = 2;
-
-#if UNITY_EDITOR
+        
         private bool IsAdd => Type == PowerUpType.AddCharacters;
         private bool IsMultiply => Type == PowerUpType.MultiplyCharacters;
-#endif
 
         public void Apply(Crowd crowd)
         {
