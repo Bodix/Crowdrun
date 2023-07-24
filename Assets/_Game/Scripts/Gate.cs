@@ -14,6 +14,7 @@ namespace Bodix.Crowdrun
         [SerializeField]
         private Gate _adjacentGate;
 
+        private MeshRenderer _meshRenderer;
         private MeshCollider _collider;
 
         private void OnValidate()
@@ -24,11 +25,15 @@ namespace Bodix.Crowdrun
         private void Awake()
         {
             _collider = GetComponent<MeshCollider>();
+            _meshRenderer = GetComponent<MeshRenderer>();
         }
 
         public void Enter(Crowd crowd)
         {
             PowerUp.Apply(crowd);
+
+            _meshRenderer.enabled = false;
+            _text.enabled = false;
 
             _adjacentGate.DisableCollider();
         }
