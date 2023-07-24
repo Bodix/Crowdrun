@@ -26,6 +26,8 @@ namespace Bodix.Crowdrun
         private GameObject _crowdCounterUi;
         [SerializeField]
         private FinishScreenUi _finishScreenUi;
+        [SerializeField]
+        private AudioSource _musicAudioSource;
 
         private Vector3 _crowdInitialPosition;
         private PlayerProgressData _currentProgress;
@@ -70,6 +72,7 @@ namespace Bodix.Crowdrun
             _crowd.transform.position = _crowdInitialPosition;
             _crowd.Refill(1, false);
 
+            _musicAudioSource.Play();
             _crowdCounterUi.gameObject.SetActive(true);
             _tutorialUi.gameObject.SetActive(true);
         }
@@ -93,6 +96,8 @@ namespace Bodix.Crowdrun
 
         private IEnumerator FinishGameCoroutine()
         {
+            _musicAudioSource.Stop();
+        
             // Waiting for crowd running a little bit forward.
             yield return new WaitForSeconds(1f);
 
