@@ -38,12 +38,14 @@ namespace Bodix.Crowdrun
                 CoinsUpdated?.Invoke(_coins);
             }
         }
+        
 
         private void Awake()
         {
             _crowdInitialPosition = _crowd.transform.position;
             _inputReader.Drag += ProcessInput;
             
+            _crowd.Initialize(this);
             ResetLevel();
         }
 

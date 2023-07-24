@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bodix.Crowdrun.RootMotion;
+using Evolutex.Evolunity.Components;
 using Evolutex.Evolunity.Extensions;
 using Evolutex.Evolunity.Utilities;
 using Evolutex.Evolunity.Utilities.Gizmos;
@@ -29,6 +30,7 @@ namespace Bodix.Crowdrun
         private float _width;
         private bool _isMoving;
 
+        public Game Game { get; private set; }
         public int Count => _characters.Count;
         public IReadOnlyList<Character> Characters => _characters;
 
@@ -44,6 +46,11 @@ namespace Bodix.Crowdrun
         public void MoveByRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
         {
             transform.Translate(new Vector3(0, 0, deltaPosition.z));
+        }
+
+        public void Initialize(Game game)
+        {
+            Game = game;
         }
 
         public void Refill(int characterCount, bool playFx = true)
