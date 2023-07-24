@@ -12,6 +12,8 @@ namespace Bodix.Crowdrun
         [SerializeField]
         private InputReader _inputReader;
         [SerializeField]
+        private ProgressStorage _progressStorage;
+        [SerializeField]
         private Crowd _crowd;
         [SerializeField]
         private GameObject _tutorialUi;
@@ -30,7 +32,7 @@ namespace Bodix.Crowdrun
         public int Coins
         {
             get => _coins;
-            private set
+            set
             {
                 _coins = value;
                 CoinsUpdated?.Invoke(_coins);
@@ -71,6 +73,7 @@ namespace Bodix.Crowdrun
             }
 
             _crowdCounterUi.gameObject.SetActive(false);
+            _progressStorage.SaveProgress();
 
             yield return new WaitForSeconds(1f);
 

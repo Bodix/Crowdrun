@@ -222,6 +222,7 @@ Transform:
   - {fileID: 96155170}
   - {fileID: 1265601401}
   - {fileID: 610281630}
+  - {fileID: 342003906}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,6 +268,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3738381445689697410, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
   m_PrefabInstance: {fileID: 3738381445436090337}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &342003905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342003906}
+  - component: {fileID: 342003907}
+  m_Layer: 0
+  m_Name: Progress Storage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &342003906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342003905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 189498051}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &342003907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342003905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a218249943442ea9b1ea56865e86e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _game: {fileID: 610281631}
 --- !u!1001 &356507034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 1762428845}
+  _progressStorage: {fileID: 342003907}
   _crowd: {fileID: 1052981285}
   _tutorialUi: {fileID: 1870886922}
   _crowdCounterUi: {fileID: 1699776536}
