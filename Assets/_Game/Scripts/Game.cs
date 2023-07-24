@@ -4,11 +4,15 @@ using System.Linq;
 using Bodix.Crowdrun.UI;
 using Evolutex.Evolunity.Components;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Bodix.Crowdrun
 {
+    // TODO: Make as singleton and remove all direct references and crowd initialization. Or better use DI.
     public class Game : MonoBehaviour
     {
+        [SerializeField]
+        private Level[] _levels;
         [SerializeField]
         private InputReader _inputReader;
         [SerializeField]
@@ -23,6 +27,7 @@ namespace Bodix.Crowdrun
         private FinishScreenUi _finishScreenUi;
 
         private Vector3 _crowdInitialPosition;
+        private PlayerProgressData _currentProgress;
 
         public event Action<int> CoinsUpdated;
 
@@ -32,20 +37,21 @@ namespace Bodix.Crowdrun
         public int Coins
         {
             get => _coins;
-            set
+            private set
             {
                 _coins = value;
                 CoinsUpdated?.Invoke(_coins);
             }
         }
-        
 
         private void Awake()
         {
             _crowdInitialPosition = _crowd.transform.position;
             _inputReader.Drag += ProcessInput;
-            
             _crowd.Initialize(this);
+
+            LoadProgress();
+            LoadLevel();
             ResetLevel();
         }
 
@@ -54,6 +60,34 @@ namespace Bodix.Crowdrun
             IsStarted = false;
 
             StartCoroutine(FinishGameCoroutine());
+        }
+
+        public void ResetLevel()
+        {
+            _inputReader.Drag += StartGameUnsubscribable;
+
+            _crowd.transform.position = _crowdInitialPosition;
+            _crowd.Refill(1, false);
+
+            _crowdCounterUi.gameObject.SetActive(true);
+            _tutorialUi.gameObject.SetActive(true);
+        }
+
+        private void LoadProgress()
+        {
+            _currentProgress = _progressStorage.LoadProgress();
+
+            Coins = _currentProgress.Coins;
+        }
+
+        private void LoadLevel()
+        {
+            SceneManager.LoadScene(_levels[_currentProgress.Level].Scene, LoadSceneMode.Additive);
+        }
+
+        private AsyncOperation UnloadLevel()
+        {
+            return SceneManager.UnloadSceneAsync(_levels[_currentProgress.Level].Scene);
         }
 
         private IEnumerator FinishGameCoroutine()
@@ -75,9 +109,18 @@ namespace Bodix.Crowdrun
             }
 
             _crowdCounterUi.gameObject.SetActive(false);
-            _progressStorage.SaveProgress();
 
             yield return new WaitForSeconds(1f);
+
+            UnloadLevel().completed += operation =>
+            {
+                // TODO: Make save progress earlier to prevent possible loss of progress data.
+                _currentProgress.Coins = Coins;
+                _currentProgress.Level = _currentProgress.Level = (_currentProgress.Level + 1) % _levels.Length;
+                _progressStorage.SaveProgress(_currentProgress);
+
+                LoadLevel();
+            };
 
             _finishScreenUi.gameObject.SetActive(true);
         }
@@ -96,17 +139,6 @@ namespace Bodix.Crowdrun
             IsStarted = true;
 
             _inputReader.Drag -= StartGameUnsubscribable;
-        }
-
-        public void ResetLevel()
-        {
-            _inputReader.Drag += StartGameUnsubscribable;
-
-            _crowd.transform.position = _crowdInitialPosition;
-            _crowd.Refill(1, false);
-
-            _crowdCounterUi.gameObject.SetActive(true);
-            _tutorialUi.gameObject.SetActive(true);
         }
     }
 }

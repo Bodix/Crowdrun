@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a218249943442ea9b1ea56865e86e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _game: {fileID: 610281631}
 --- !u!1 &357965601
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +535,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb42b07aa2ed4d8381648748d9a88b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levels:
+  - Scene:
+      sceneAsset: {fileID: 102900000, guid: eedd2a6bea805d343aaca47c3e7d7813, type: 3}
+      scenePath: Assets/_Game/Scenes/Level_1.unity
+  - Scene:
+      sceneAsset: {fileID: 102900000, guid: a2d1a1a93030cf146bbdfb33218f1d04, type: 3}
+      scenePath: Assets/_Game/Scenes/Level_2.unity
+  - Scene:
+      sceneAsset: {fileID: 102900000, guid: 376a81087cd902b40bec185af7a2c999, type: 3}
+      scenePath: Assets/_Game/Scenes/Level_3.unity
   _inputReader: {fileID: 1762428845}
   _progressStorage: {fileID: 342003907}
   _crowd: {fileID: 1052981285}
