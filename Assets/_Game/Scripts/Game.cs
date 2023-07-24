@@ -70,7 +70,7 @@ namespace Bodix.Crowdrun
             _inputReader.Drag += StartGameUnsubscribable;
 
             _crowd.transform.position = _crowdInitialPosition;
-            _crowd.Refill(1, false);
+            _crowd.AddCharacters(1, false);
 
             _musicAudioSource.Play();
             _crowdCounterUi.gameObject.SetActive(true);

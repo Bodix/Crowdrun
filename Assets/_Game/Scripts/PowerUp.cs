@@ -11,7 +11,7 @@ namespace Bodix.Crowdrun
         public int AdditionalAmount = 10;
         [AllowNesting, ShowIf(nameof(IsMultiply))]
         public int Multiplier = 2;
-        
+
         private bool IsAdd => Type == PowerUpType.AddCharacters;
         private bool IsMultiply => Type == PowerUpType.MultiplyCharacters;
 
@@ -20,10 +20,10 @@ namespace Bodix.Crowdrun
             switch (Type)
             {
                 case PowerUpType.AddCharacters:
-                    crowd.Refill(crowd.Count + AdditionalAmount);
+                    crowd.AddCharacters(AdditionalAmount);
                     break;
                 case PowerUpType.MultiplyCharacters:
-                    crowd.Refill(crowd.Count * Multiplier);
+                    crowd.AddCharacters(crowd.Count * (Multiplier - 1));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

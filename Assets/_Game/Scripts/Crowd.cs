@@ -52,20 +52,29 @@ namespace Bodix.Crowdrun
             Game = game;
         }
 
-        public void Refill(int characterCount, bool playFx = true)
+        public void AddCharacters(int characterCount, bool playFx = true)
         {
-            // TODO: Implement pooling.
-            _characters.ForEach(x => Destroy(x.gameObject));
-            _characters.Clear();
+            // TODO: Implement pooling. Refactor this method.
 
-            for (int i = 0; i < characterCount; i++)
+            int totalCharacterCount = _characters.Count + characterCount;
+            bool regenerateCrowd = totalCharacterCount < 9;
+            if (regenerateCrowd)
             {
+                _characters.ForEach(x => Destroy(x.gameObject));
+                _characters.Clear();
+            }
+
+            for (int i = 0; i < totalCharacterCount; i++)
+            {
+                if (!regenerateCrowd && i < _characters.Count)
+                    continue;
+
                 // TODO: Improve spawn position logic.
-                Vector2 position = transform.position.XZ() + characterCount switch
+                Vector2 position = transform.position.XZ() + totalCharacterCount switch
                 {
                     1 => Vector2.zero,
-                    < 4 => GetCirclePosition(characterCount, i, 0.5f),
-                    < 8 => GetCirclePosition(characterCount, i, 0.8f),
+                    < 4 => GetCirclePosition(totalCharacterCount, i, 0.5f),
+                    < 8 => GetCirclePosition(totalCharacterCount, i, 0.8f),
                     _ => MathUtilities.GetPhyllotaxisPosition(i, _distanceBetweenCharacters)
                 };
 
