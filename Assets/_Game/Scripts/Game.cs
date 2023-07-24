@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using Bodix.Crowdrun.UI;
 using Evolutex.Evolunity.Components;
 using UnityEngine;
 
@@ -16,6 +17,10 @@ namespace Bodix.Crowdrun
         private GameObject _tutorialUi;
         [SerializeField]
         private GameObject _crowdCounterUi;
+        [SerializeField]
+        private FinishScreenUi _finishScreenUi;
+
+        private Vector3 _crowdInitialPosition;
 
         public event Action<int> CoinsUpdated;
 
@@ -34,10 +39,10 @@ namespace Bodix.Crowdrun
 
         private void Awake()
         {
-            _crowd.Refill(1, false);
-
+            _crowdInitialPosition = _crowd.transform.position;
             _inputReader.Drag += ProcessInput;
-            _inputReader.Drag += StartGameUnsubscribable;
+            
+            ResetLevel();
         }
 
         public void FinishGame()
@@ -64,8 +69,12 @@ namespace Bodix.Crowdrun
 
                 yield return new WaitForSeconds(0.1f);
             }
-            
+
             _crowdCounterUi.gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(1f);
+
+            _finishScreenUi.gameObject.SetActive(true);
         }
 
         private void ProcessInput(Vector2 input)
@@ -82,6 +91,17 @@ namespace Bodix.Crowdrun
             IsStarted = true;
 
             _inputReader.Drag -= StartGameUnsubscribable;
+        }
+
+        public void ResetLevel()
+        {
+            _inputReader.Drag += StartGameUnsubscribable;
+
+            _crowd.transform.position = _crowdInitialPosition;
+            _crowd.Refill(1, false);
+
+            _crowdCounterUi.gameObject.SetActive(true);
+            _tutorialUi.gameObject.SetActive(true);
         }
     }
 }

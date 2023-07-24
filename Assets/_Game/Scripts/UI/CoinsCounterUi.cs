@@ -20,6 +20,8 @@ namespace Bodix.Crowdrun.UI
         private void Awake()
         {
             _game.CoinsUpdated += SetTextAnimated;
+
+            SetTextAnimated(_game.Coins);
         }
 
         private void SetTextAnimated(int coins)
@@ -27,7 +29,7 @@ namespace Bodix.Crowdrun.UI
             _text.text = coins.ToString();
 
             transform.ToRectTransform().DOPunchScale(
-                new Vector3(_punchScaleAmount, _punchScaleAmount, _punchScaleAmount), 
+                new Vector3(_punchScaleAmount, _punchScaleAmount, _punchScaleAmount),
                 _punchAnimationDuration);
         }
     }
