@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 namespace Bodix.Crowdrun
 {
     // TODO: Make as singleton and remove all direct references and crowd initialization. Or better use DI.
+    // TODO: Refactor progress handling and level loading.
     public class Game : MonoBehaviour
     {
         [SerializeField]

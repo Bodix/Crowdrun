@@ -30,12 +30,16 @@ namespace Bodix.Crowdrun
         {
             PowerUp.Apply(crowd);
 
-            _adjacentGate.DisableCollider();
+            // May be null if gate was deleted by game designer.
+            if (_adjacentGate)
+                _adjacentGate.DisableCollider();
         }
 
         private void DisableCollider()
         {
-            _collider.enabled = false;
+            // May not be initialized if gate was disabled by game designer.
+            if (_collider)
+                _collider.enabled = false;
         }
 
         private void SetText(TextMeshPro text, PowerUp powerUp)
