@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 826862899489249390}
   - component: {fileID: 826862899489249389}
   m_Layer: 0
-  m_Name: Fire Bubble Explosion Effect
+  m_Name: Fire Bubble Explosion Fx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

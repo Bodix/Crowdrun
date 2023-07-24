@@ -30,9 +30,7 @@ namespace Bodix.Crowdrun
         {
             PowerUp.Apply(crowd);
 
-            // May be null if gate was deleted by game designer.
-            if (_adjacentGate)
-                _adjacentGate.DisableCollider();
+            _adjacentGate.DisableCollider();
         }
 
         private void DisableCollider()
