@@ -1243,7 +1243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6963540543643761503, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
       propertyPath: PowerUp.AdditionalAmount
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724519150da1e844d9bb2a8adb555892, type: 3}
