@@ -34,7 +34,7 @@ namespace Bodix.Crowdrun
 
         private void Awake()
         {
-            _crowd.Refill(1);
+            _crowd.Refill(1, false);
 
             _inputReader.Drag += ProcessInput;
             _inputReader.Drag += StartGameUnsubscribable;

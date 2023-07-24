@@ -21,6 +21,8 @@ namespace Bodix.Crowdrun
 
         [SerializeField]
         private Character _characterPrefab;
+        [SerializeField]
+        private SpecialFx _expandFx;
 
         private readonly List<Character> _characters = new();
         private Character _rootMotionSourceCharacter;
@@ -44,7 +46,7 @@ namespace Bodix.Crowdrun
             transform.Translate(new Vector3(0, 0, deltaPosition.z));
         }
 
-        public void Refill(int characterCount)
+        public void Refill(int characterCount, bool playFx = true)
         {
             // TODO: Implement pooling.
             _characters.ForEach(x => Destroy(x.gameObject));
@@ -73,6 +75,9 @@ namespace Bodix.Crowdrun
 
             UpdateRootMotionSource();
             UpdateWidth();
+
+            if (playFx)
+                _expandFx.Play();
         }
 
         public void StartMoving()
