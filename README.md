@@ -16,6 +16,7 @@ Clone of the [Count Masters](https://play.google.com/store/apps/details?id=freep
 - Save progress and coins between sessions.
 - 3 different levels.
 - Adaptive UI.
+- Draw call batching (optimization).
 
 ### Missing features:
 - No obstacles.
